@@ -1,0 +1,26 @@
+@import 'modern-normalize/modern-normalize.css';
+
+@import './variables';
+@import './fonts';
+
+
+html,
+body {
+	position: relative;
+	min-height: 100vh;
+}
+
+body {
+	padding-bottom: 64px;
+	font-family: var(--fontMerriweather) serif;
+	font-weight: 400;
+	color: var(--colorBaseText);
+	background-color: var(--colorDarkGray);
+}
+
+#app {
+	display: flex;
+	padding-top: 36px;
+	padding-bottom: 36px;
+	place-content: center;
+}

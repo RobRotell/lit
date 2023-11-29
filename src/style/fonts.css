@@ -1,0 +1,15 @@
+@font-face {
+	font-display: swap;
+	font-family: var( --fontWorkSans );
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/work-sans-v18-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: var( --fontMerriweather );
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/merriweather-v30-latin-regular.woff2') format('woff2');
+}

@@ -1,0 +1,9 @@
+:root {
+	--fontMerriweather: 'Merriweather';
+	--fontWorkSans: 'Work Sans';
+	--baseFontSize: pxToRem( 16 );
+
+	--colorBaseText: white;
+	--colorTeal: red;
+	--colorDarkGray: #111;
+}
