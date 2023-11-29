@@ -4,6 +4,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { Book } from './Book'
 import { fetchBook } from '../utils'
+import { LoadingScreen } from './LoadingScreen'
 
 
 export const BookContext = createContext()
@@ -17,8 +18,8 @@ export const App = () => {
 
 	// initial book fetch
 	useEffect( async () => {
-		const book = await fetchBook()
-		setBook( book )
+		const fetchedBook = await fetchBook()
+		setBook( fetchedBook )
 	}, [] )
 
 	// data to pass to consumers
@@ -26,15 +27,17 @@ export const App = () => {
 		book,
 		setBook,
 		excludedBookIds,
-		setExcludedBookIds
+		setExcludedBookIds,
 	}
-
-	console.log( 'render' )
 
 	return (
 		<BookContext.Provider value={providerData}>
 			<Header />
-			<Book />
+			{!book.id ? (
+				<LoadingScreen />
+			) : (
+				<Book />
+			)}
 			<Footer />
 		</BookContext.Provider>
 	)

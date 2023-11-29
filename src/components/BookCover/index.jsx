@@ -13,6 +13,7 @@ export const BookCover = () => {
 		)
 	} else {
 		return (
+			// switch to plain img with srcset/sizes?
 			<picture className={style.picture}>
 				<source
 					srcset={book.imageUrls[480]}
