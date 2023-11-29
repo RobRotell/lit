@@ -1,0 +1,27 @@
+.header {
+	position: sticky;
+	top: 0;
+	display: flex;
+	place-content: center;
+	place-items: center;
+	height: 64px;
+	padding-left: 36px;
+	padding-right: 36px;
+	backdrop-filter: blur(10px) grayscale(100%);
+	z-index: 1000;
+
+	@media(width >=600px) {
+		place-content: flex-start;
+	}
+
+	.link {
+		display: block;
+		width: 140px;
+
+		.logo {}
+	}
+
+	.bob {
+		color: blue;
+	}
+}
