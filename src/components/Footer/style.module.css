@@ -1,1 +1,32 @@
-.footer {}
+.footer {
+	position: fixed;
+	display: flex;
+	place-content: center;
+	gap: 16px;
+	right: 16px;
+	bottom: 0;
+	z-index: 1000;
+}
+
+.link {
+	display: flex;
+	place-content: center;
+	place-items: center;
+	width: 48px;
+	height: 48px;
+	border: 0;
+	background-color: var(--colorTeal);
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	cursor: pointer;
+
+	svg {
+		display: block;
+		width: 28px;
+		height: 28px;
+	}
+}
+
+.linkBtn {
+	composes: link;
+}

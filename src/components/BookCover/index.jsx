@@ -37,6 +37,7 @@ export const BookCover = () => {
 				/>
 
 				<img
+					className={style.img}
 					src={book.imageUrls[1024]}
 					alt={`Poster for "${book.title}"`}
 					title={`Poster for "${book.title}"`}

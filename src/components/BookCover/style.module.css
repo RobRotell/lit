@@ -1,1 +1,16 @@
-.picture {}
+.picture {
+	align-self: flex-end;
+	width: 80%;
+	height: auto;
+	aspect-ratio: 1;
+	border-top-left-radius: 24px;
+	border-bottom-right-radius: 24px;
+	overflow: hidden;
+
+	.img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1;
+	}
+}

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'preact/hooks'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { Book } from './Book'
-import { fetchBook } from '../utils'
+import { fetchBookFromApi } from '../utils'
 import { LoadingScreen } from './LoadingScreen'
 
 
@@ -17,10 +17,16 @@ export const App = () => {
 	const [ excludedBookIds, setExcludedBookIds ] = useState([])
 
 	// initial book fetch
-	useEffect( async () => {
-		const fetchedBook = await fetchBook()
-		setBook( fetchedBook )
+	useEffect( () => {
+		loadBook()
 	}, [] )
+
+
+	const loadBook = async () => {
+		const fetchedBook = await fetchBookFromApi()
+		setBook( fetchedBook )
+	}
+
 
 	// data to pass to consumers
 	const providerData = {
@@ -28,7 +34,9 @@ export const App = () => {
 		setBook,
 		excludedBookIds,
 		setExcludedBookIds,
+		loadBook,
 	}
+
 
 	return (
 		<BookContext.Provider value={providerData}>

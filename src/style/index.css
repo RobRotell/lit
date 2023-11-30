@@ -12,15 +12,15 @@ body {
 
 body {
 	padding-bottom: 64px;
-	font-family: var(--fontMerriweather) serif;
+	font-family: var(--fontMerriweather);
 	font-weight: 400;
 	color: var(--colorBaseText);
 	background-color: var(--colorDarkGray);
 }
 
 #app {
-	display: flex;
+	/* display: flex;
 	padding-top: 36px;
 	padding-bottom: 36px;
-	place-content: center;
+	place-content: center; */
 }

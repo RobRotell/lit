@@ -1,39 +1,33 @@
-import { useContext } from 'preact/hooks'
 import style from './style.module.css'
+
+
+import { useContext } from 'preact/hooks'
 import { BookContext } from '../app'
 
 
 export const BookMeta = () => {
 	const { book } = useContext( BookContext )
 
+	const supportingDetails = new Map([
+		[ 'tagline', book.tagline ],
+		[ 'author', book.author ],
+		[ 'year', book.releaseYear ],
+		[ 'genre', book.genre ],
+	])
+
 	return (
 		<div className={style.details}>
-
 			<div className={style.detail}>
 				<div className={style.label}>Title</div>
 				<h1 className={style.heading}>{book.title}</h1>
 			</div>
 
-			<div className={style.detail}>
-				<div className={style.label}>Tagline</div>
-				<h2 className={style.subheading}>{book.tagline}</h2>
-			</div>
-
-			<div className={style.detail}>
-				<div className={style.label}>Author</div>
-				<h2 className={style.subheading}>{book.author}</h2>
-			</div>
-
-			<div className={style.detail}>
-				<div className={style.label}>Year</div>
-				<h2 className={style.subheading}>{book.releaseYear}</h2>
-			</div>
-
-			<div className={style.detail}>
-				<div className={style.label}>Genre</div>
-				<h2 className={style.subheading}>{book.genre}</h2>
-			</div>
-
+			{[...supportingDetails].map( ( [ key, value ] ) => (
+				<div key={key} className={style.detail}>
+					<div className={style.label}>{key}</div>
+					<h2 className={style.subheading}>{value}</h2>
+				</div>
+			))}
 		</div>
 	)
 }
