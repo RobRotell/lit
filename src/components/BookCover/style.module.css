@@ -1,4 +1,4 @@
-.picture {
+.frame {
 	align-self: flex-end;
 	width: 80%;
 	height: auto;
@@ -6,11 +6,40 @@
 	border-top-left-radius: 24px;
 	border-bottom-right-radius: 24px;
 	overflow: hidden;
+}
+
+.picture {
+	composes: frame;
 
 	.img {
 		display: block;
 		width: 100%;
 		height: auto;
 		aspect-ratio: 1;
+	}
+}
+
+.placeholder {
+	composes: frame;
+	position: relative;
+	background-image: linear-gradient(to right,
+			var(--colorShimmerDark) 0%,
+			var(--colorShimmerLight) 20%,
+			var(--colorShimmerLight) 30%,
+			var(--colorShimmerDark) 40%,
+			var(--colorShimmerDark) 100%);
+	background-size: 1000px;
+	will-change: background-position;
+	transform: linear;
+	animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+
+	100% {
+		background-position: 1000px 0;
 	}
 }

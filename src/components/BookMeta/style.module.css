@@ -13,50 +13,85 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
+}
 
-	.detail {
-		@media (width >=1024px) {
-			flex: 1 0 33%;
+.detail {
+	@media (width >=1024px) {
+		flex: 1 0 33%;
+		padding-right: 16px;
 
-			&:first-of-type,
-			&:nth-of-type(2) {
-				flex-basis: 100%;
-			}
+		&:first-of-type,
+		&:nth-of-type(2) {
+			flex-basis: 100%;
 		}
 	}
+}
 
-	.label {
-		font-family: var(--fontWorkSans);
-		font-weight: 700;
-		font-size: 12px;
-		color: var(--colorTeal);
-		text-transform: uppercase;
-		letter-spacing: 0.075rem;
+.label {
+	font-family: var(--fontPermanentMarker);
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--colorTeal);
+	/* text-transform: uppercase; */
+	letter-spacing: 0.075rem;
 
-		@media (width >=600px) {
-			font-size: 14px;
-		}
+	@media (width >=600px) {
+		font-size: 20px;
+	}
+}
+
+.heading,
+.subheading {
+	margin-top: 8px;
+	margin-bottom: 20px;
+}
+
+.heading {
+	font-size: 22px;
+
+	@media(width >=600px) {
+		font-size: 28px;
+	}
+}
+
+.subheading {
+	font-size: 16px;
+
+	@media(width >=600px) {
+		font-size: 20px;
+	}
+}
+
+.placeholder {
+	position: relative;
+	background-image: linear-gradient(to right,
+			var(--colorShimmerDark) 0%,
+			var(--colorShimmerLight) 20%,
+			var(--colorShimmerLight) 30%,
+			var(--colorShimmerDark) 40%,
+			var(--colorShimmerDark) 100%);
+	background-size: 1000px;
+	will-change: background-position;
+	transform: linear;
+	animation: shimmer 2s infinite linear;
+}
+
+.headingPlaceholder {
+	composes: placeholder;
+	composes: heading;
+}
+
+.subheadingPlaceholder {
+	composes: placeholder;
+	composes: subheading;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
 	}
 
-	.heading,
-	.subheading {
-		margin-top: 8px;
-		margin-bottom: 20px;
-	}
-
-	.heading {
-		font-size: 22px;
-
-		@media(width >=600px) {
-			font-size: 28px;
-		}
-	}
-
-	.subheading {
-		font-size: 16px;
-
-		@media(width >=600px) {
-			font-size: 20px;
-		}
+	100% {
+		background-position: 1000px 0;
 	}
 }

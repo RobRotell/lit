@@ -8,8 +8,9 @@ export const BookCover = () => {
 
 	if( undefined === book.imageUrls ) {
 		return (
-			// todo
-			<></>
+			<div
+				className={style.placeholder}
+			></div>
 		)
 	} else {
 		return (

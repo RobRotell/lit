@@ -1,12 +1,16 @@
 :root {
-	--fontMerriweather: 'Merriweather', serif;
-	--fontWorkSans: 'Work Sans', sans-serif;
+	--fontMerriweather: 'Merriweather';
+	/* --fontWorkSans: 'Work Sans' */
+	--fontPermanentMarker: 'Permanent Marker';
 	--baseFontSize: pxToRem(16);
 
 	--colorBaseText: white;
 	--colorTeal: #50B0CC;
 	--colorTealDark: #326D80;
 	--colorDarkGray: #111;
+
+	--colorShimmerDark: #222;
+	--colorShimmerLight: #333;
 
 	--colorGraySemi: #ffffff40;
 }

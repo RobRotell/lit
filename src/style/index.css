@@ -19,8 +19,6 @@ body {
 }
 
 #app {
-	/* display: flex;
-	padding-top: 36px;
-	padding-bottom: 36px;
-	place-content: center; */
+	display: flex;
+	flex-direction: column;
 }

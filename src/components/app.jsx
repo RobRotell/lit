@@ -2,9 +2,8 @@ import { createContext } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { Book } from './Book'
+import { BookPlacement } from './BookPlacement'
 import { fetchBookFromApi } from '../utils'
-import { LoadingScreen } from './LoadingScreen'
 
 
 export const BookContext = createContext()
@@ -23,8 +22,15 @@ export const App = () => {
 
 
 	const loadBook = async () => {
-		const fetchedBook = await fetchBookFromApi()
-		setBook( fetchedBook )
+
+		// clear preexisting book
+		setBook({})
+
+		// timeout for illusion of loading (API is heckin' fast)
+		setTimeout( async () => {
+			const fetchedBook = await fetchBookFromApi()
+			setBook( fetchedBook )
+		}, 250 )
 	}
 
 
@@ -41,11 +47,7 @@ export const App = () => {
 	return (
 		<BookContext.Provider value={providerData}>
 			<Header />
-			{!book.id ? (
-				<LoadingScreen />
-			) : (
-				<Book />
-			)}
+			<BookPlacement />
 			<Footer />
 		</BookContext.Provider>
 	)

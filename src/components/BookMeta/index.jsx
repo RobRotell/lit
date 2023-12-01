@@ -18,14 +18,14 @@ export const BookMeta = () => {
 	return (
 		<div className={style.details}>
 			<div className={style.detail}>
-				<div className={style.label}>Title</div>
-				<h1 className={style.heading}>{book.title}</h1>
+				<div className={style.label}>title</div>
+				<h1 className={book.title ? style.heading : style.headingPlaceholder}>{book.title ?? '\u00A0'}</h1>
 			</div>
 
 			{[...supportingDetails].map( ( [ key, value ] ) => (
 				<div key={key} className={style.detail}>
 					<div className={style.label}>{key}</div>
-					<h2 className={style.subheading}>{value}</h2>
+					<h2 className={value ? style.subheading : style.subheadingPlaceholder}>{value ?? '\u00A0'}</h2>
 				</div>
 			))}
 		</div>
