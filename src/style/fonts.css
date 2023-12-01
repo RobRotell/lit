@@ -1,9 +1,9 @@
 @font-face {
 	font-display: swap;
-	font-family: 'Work Sans';
+	font-family: 'Permanent Marker';
 	font-style: normal;
 	font-weight: 700;
-	src: local('Work Sans'), url('@/fonts/work-sans-700.woff2') format('woff2');
+	src: local('Permanent Marker'), url('@/fonts/permanent-marker-400.woff2') format('woff2');
 }
 
 @font-face {
