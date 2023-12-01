@@ -5,7 +5,7 @@ import { BookCover } from '../BookCover'
 import { BookMeta } from '../BookMeta'
 
 
-export const Book = () => {
+export const BookPlacement = () => {
 	return (
 		<article className={style.book}>
 			<BookCover />
