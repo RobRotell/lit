@@ -4,6 +4,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { BookPlacement } from './BookPlacement'
 import { fetchBookFromApi } from '../utils'
+import { BookAPI } from '../controllers/BookAPI'
 
 
 export const BookContext = createContext()
@@ -13,22 +14,40 @@ export const App = () => {
 
 	// might pursue store later, but for now, native state will do
 	const [ book, setBook ] = useState({})
-	const [ excludedBookIds, setExcludedBookIds ] = useState([])
 
 	// initial book fetch
 	useEffect( () => {
-		loadBook()
+		loadBook( true )
 	}, [] )
 
 
-	const loadBook = async () => {
+	/**
+	 * Fetch book from API
+	 *
+	 * @param {boolean} useQueryParam If true, check for (and use) book ID in query param
+	 * @return void
+	 */
+	const loadBook = async ( useQueryParam = false ) => {
+		let fetchedBook
 
 		// clear preexisting book
 		setBook({})
 
+		if( useQueryParam ) {
+			const params = new URLSearchParams( window.location.search )
+
+			if( params.has( 'book' ) ) {
+				fetchedBook = await BookAPI.getBookById( params.get( 'book' ) )
+			}
+		}
+
+		// at this point, just get a random book (including if ID wasn't for a valid book above)
+		if( !fetchedBook ) {
+			fetchedBook = await BookAPI.getRandomBook()
+		}
+
 		// timeout for illusion of loading (API is heckin' fast)
 		setTimeout( async () => {
-			const fetchedBook = await fetchBookFromApi()
 			setBook( fetchedBook )
 		}, 250 )
 	}
@@ -38,9 +57,7 @@ export const App = () => {
 	const providerData = {
 		book,
 		setBook,
-		excludedBookIds,
-		setExcludedBookIds,
-		loadBook,
+		loadBook, // should really be only thing we need to pass
 	}
 
 

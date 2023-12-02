@@ -11,7 +11,6 @@ export const Footer = () => {
 	// for clipboard copying
 	const [ copied, setCopied ] = useState( false )
 
-
 	/**
 	 * Copy current book URL to clipboard
 	 *
