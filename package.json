@@ -33,9 +33,6 @@
 		"vite-plugin-minify": "^1.5.2"
 	},
 	"dependencies": {
-		"@emotion/css": "^11.11.2",
-		"@emotion/react": "^11.11.1",
-		"@emotion/styled": "^11.11.0",
 		"modern-normalize": "^2.0.0",
 		"preact": "^10.19.2"
 	},
