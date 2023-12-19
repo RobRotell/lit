@@ -25,10 +25,33 @@ export class BookAPI {
 	 *
 	 * @return {<Promise>object}
 	 */
-	static async getRandomBook() {
-		const excludedIds = BookAPI.#getExcludedIds( true )
-		console.log( excludedIds )
+	static getRandomBook() {
+		return new Promise( resolve => {
+			const excludedIds = BookAPI.#getExcludedIds()
+			const apiUrl = new URL( import.meta.env.VITE_API_URL_GET_RANDOM_BOOK )
 
+			if( excludedIds.length ) {
+				apiUrl.searchParams.set( 'exclude', excludedIds )
+			}
+
+			console.log( 'get random book' )
+
+			BookAPI.fetchReq( apiUrl )
+				.then( book => {
+					const { id } = book
+
+					// update URL (in case user wants to share link)
+					BookAPI.updateBookQueryParam( id )
+
+					// avoid querying book if user refetches random book
+					BookAPI.#excludedIds.push( id )
+
+					resolve( book )
+
+				}).catch( err => {
+					resolve( false )
+				})
+		})
 	}
 
 
@@ -38,10 +61,36 @@ export class BookAPI {
 	 * @throws {Error} no book matches ID
 	 *
 	 * @param {number} id Book ID
-	 * @return {<Promise>(object|null)}
+	 * @return {<Promise>(object|false)}
 	 */
-	static async getBookById( id ) {
+	static getBookById( id ) {
+		return new Promise( resolve => {
+			id = parseInt( id, 10 )
 
+			if( Number.isNaN( id ) ) {
+				return resolve( false )
+			}
+
+			const apiUrl = new URL( import.meta.env.VITE_API_URL_GET_BOOK_BY_ID )
+
+			apiUrl.pathname = `${apiUrl.pathname}/${id}`
+
+			BookAPI.fetchReq( apiUrl )
+				.then( book => {
+					const { id } = book
+
+					// update URL (in case user wants to share link)
+					BookAPI.updateBookQueryParam( id )
+
+					// avoid querying book if user refetches random book
+					BookAPI.#excludedIds.push( id )
+
+					resolve( book )
+
+				}).catch( err => {
+					resolve( false )
+				})
+		})
 	}
 
 
@@ -69,6 +118,29 @@ export class BookAPI {
 		}
 
 		return BookAPI.#excludedIds
+	}
+
+
+	/**
+	 * Make request
+	 *
+	 * @param {obj} url URL object
+	 * @return {<Promise>(object|false)}
+	 */
+	static fetchReq( url ) {
+		return new Promise( ( resolve, reject ) => {
+			fetch( url.toString() )
+				.then( res => res.json() )
+				.then( res => {
+					const { success, data } = res
+
+					if( !success || 'object' !== typeof data ) {
+						reject( 'Request failed. Please try again.' )
+					}
+
+					resolve( data.book )
+				})
+		})
 	}
 
 }

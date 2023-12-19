@@ -3,7 +3,6 @@ import { useState, useEffect } from 'preact/hooks'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { BookPlacement } from './BookPlacement'
-import { fetchBookFromApi } from '../utils'
 import { BookAPI } from '../controllers/BookAPI'
 
 

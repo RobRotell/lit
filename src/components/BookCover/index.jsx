@@ -1,10 +1,25 @@
-import { useContext } from 'preact/hooks'
+import { useContext, useEffect, useState } from 'preact/hooks'
 import style from './style.module.css'
 import { BookContext } from '../app'
+import { createRef } from 'preact'
+
+
+//
+
+
+// const imageHasLoaded = () => {
+// 	console.log( imgClasses )
+// 	const updatedClasses = imgClasses.filter( className => {
+// 		console.log( className )
+// 		return '.picture-is-loading' !== className
+// 	})
+// 	setImgClasses( [ ...imgClasses, style.picture ] )
+// }
 
 
 export const BookCover = () => {
 	const { book } = useContext( BookContext )
+
 
 	if( undefined === book.imageUrls ) {
 		return (
@@ -40,7 +55,6 @@ export const BookCover = () => {
 				<img
 					className={style.img}
 					src={book.imageUrls[1024]}
-					alt={`Poster for "${book.title}"`}
 					title={`Poster for "${book.title}"`}
 					width="1024"
 					height="1024"

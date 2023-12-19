@@ -6,34 +6,42 @@ import { BookContext } from '../app'
 
 
 export const Footer = () => {
-	const { setBook, excludedBookIds, loadBook } = useContext( BookContext )
+	const { loadBook } = useContext( BookContext )
 
 	// for clipboard copying
-	const [ copied, setCopied ] = useState( false )
+	// const [ copied, setCopied ] = useState( false )
+
+	// /**
+	//  * Copy current book URL to clipboard
+	//  *
+	//  * @return void
+	//  */
+	// const copyLinkToClipboard = () => {
+	// 	navigator.clipboard
+	// 		.writeText( window.location.href )
+	// 		.then( () => {
+	// 			setCopied( true )
+
+	// 			// automatically reset after a few seconds
+	// 			setTimeout( () => {
+	// 				setCopied( false )
+	// 			}, 2000 )
+	// 		})
+	// }
 
 	/**
-	 * Copy current book URL to clipboard
+	 * Handle user clicking "refresh book" button
 	 *
 	 * @return void
 	 */
-	const copyLinkToClipboard = () => {
-		navigator.clipboard
-			.writeText( window.location.href )
-			.then( () => {
-				setCopied( true )
-
-				// automatically reset after a few seconds
-				setTimeout( () => {
-					setCopied( false )
-				}, 2000 )
-			})
+	const handleRefreshClick = () => {
+		loadBook( false )
 	}
-
 
 	return (
 		<footer className={style.footer}>
 
-			<button
+			{/* <button
 				className={style.linkBtn}
 				onClick={copyLinkToClipboard}
 				type="button"
@@ -44,11 +52,11 @@ export const Footer = () => {
 				) : (
 					<>copy</>
 				)}
-			</button>
+			</button> */}
 
 			<button
 				className={style.linkBtn}
-				onClick={loadBook}
+				onClick={handleRefreshClick}
 				type="button"
 				title="Refresh book"
 			>

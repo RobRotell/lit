@@ -8,6 +8,22 @@
 	overflow: hidden;
 }
 
+.placeholder {
+	composes: frame;
+
+	position: relative;
+	background-image: linear-gradient(to right,
+			var(--colorShimmerDark) 0%,
+			var(--colorShimmerLight) 20%,
+			var(--colorShimmerLight) 30%,
+			var(--colorShimmerDark) 40%,
+			var(--colorShimmerDark) 100%);
+	background-size: 1000px;
+	will-change: background-position;
+
+	animation: shimmer 2s infinite linear;
+}
+
 .picture {
 	composes: frame;
 
@@ -19,20 +35,6 @@
 	}
 }
 
-.placeholder {
-	composes: frame;
-	position: relative;
-	background-image: linear-gradient(to right,
-			var(--colorShimmerDark) 0%,
-			var(--colorShimmerLight) 20%,
-			var(--colorShimmerLight) 30%,
-			var(--colorShimmerDark) 40%,
-			var(--colorShimmerDark) 100%);
-	background-size: 1000px;
-	will-change: background-position;
-	transform: linear;
-	animation: shimmer 2s infinite linear;
-}
 
 @keyframes shimmer {
 	0% {
