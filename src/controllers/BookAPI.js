@@ -34,8 +34,6 @@ export class BookAPI {
 				apiUrl.searchParams.set( 'exclude', excludedIds )
 			}
 
-			console.log( 'get random book' )
-
 			BookAPI.fetchReq( apiUrl )
 				.then( book => {
 					const { id } = book

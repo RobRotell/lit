@@ -8,7 +8,7 @@
 	z-index: 1000;
 }
 
-.link {
+.linkBtn {
 	display: flex;
 	place-content: center;
 	place-items: center;
@@ -20,13 +20,9 @@
 	border-top-right-radius: 8px;
 	cursor: pointer;
 
-	svg {
+	.icon {
 		display: block;
 		width: 28px;
 		height: 28px;
 	}
-}
-
-.linkBtn {
-	composes: link;
 }
